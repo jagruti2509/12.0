@@ -1,0 +1,55 @@
+<odoo>
+	<!-- Form view -->
+	<record model="ir.ui.view" id="doctor_doctor_form_view">
+		<field name="name">doctor.doctor.form.view</field>
+		<field name="model">doctor.doctor</field>
+		<field name="arch" type="xml">
+		   <form string="Doctor">
+			   	<sheet>
+			   		<div class="oe_title">
+                        <h1>
+                            <field name="name"  placeholder="Name" required="1"/>
+                            <field name="image" widget='image' class="oe_avatar" options='{"preview_image": "image_medium"}'/>
+                        </h1>
+                    </div>
+			   		<group>
+			   			<group>
+							<field name="city" placeholder="City" required="1" />
+                            <field name="state_id"  placeholder="State" options='{"no_open": True}'/>
+                            <field name="country_id"  placeholder="Country" options='{"no_open": True}'/>
+			   			</group>
+			   			<group>
+			   				<field name="email" required="1"/>
+							<field name="mobile"/>
+							<field name="docotor_speciality"/>
+			   			</group>
+					</group>
+				</sheet>
+			</form>		
+		</field>
+	</record>
+	<!-- Tree view -->
+	<record model='ir.ui.view' id='doctor_doctor_tree_view'>
+		<field name='name'>doctor.doctor.tree</field>
+		<field name='model'>doctor.doctor</field>
+		<field name='arch' type='xml'>
+			<tree>
+				<field name="name"/>
+				<field name="city"/>
+				<field name="docotor_speciality"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="doctor_doctor_action" model="ir.actions.act_window">
+		<field name="name">Doctor </field>
+		<field name="res_model">doctor.doctor</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<menuitem id="doctors_main_menu" name="Doctors" sequence="3"/>
+
+	<menuitem id="doctors_sub_menu" name="Doctors" action="doctor_doctor_action" parent="doctors_main_menu"/>
+
+</odoo>

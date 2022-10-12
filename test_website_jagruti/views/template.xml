@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="template_inherit" name="template_inherit" inherit_id="website.assets_frontend" >
+        <xpath expr="." position="inside">
+             <link rel="stylesheet" type="text/css" href="/test_website_jagruti/static/src/css/custom.css"/>
+        </xpath>
+    </template>
+
+    <!-- Create Form -->
+    <template id="doctors_reg" name="Register Here">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <form action="/doctors/form//submit" id="add-property-form">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" name="name" id="name" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control" name="email" id="email" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile:</label>
+                                <input type="mobile" class="form-control" name="email" id="email" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <input type="city" class="form-control" name="email" id="email" required="true" />
+                            </div>
+
+                            <div class="form-group">
+                                 <button id ="add_property_button" type="submit" class="btn btn-primary" style="background-color:#69D5E1;font-size:30px;">Submit</button>
+                            </div>
+                            <div id='alert_message' class="form-group" style="text-align: center;color: green;"></div> 
+                        </form>
+                    </div>
+                </div>
+              </div>
+          </t>
+    </template>
+    <!-- Alert Form -->
+    <template id="doctor_form_success" name="Doctor Form Successfully Submitted">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            Doctor created successfully.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Display Doctor Details -->
+    <template id="doctors_display" name="Doctors Display">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <table width="100%">
+                        <tbody>
+                            <div class="row">
+                                <t t-foreach="doctors" t-as="doc">
+                                    <div class=" doc_box col-md-2 col-sm-2 col-xs-3 mt8 mb8">
+                                        <b><span t-esc="doc.name" style="color:#3c2ea7c4;"/></b><br/>
+                                        Mobile:<b><span t-esc="doc.mobile" style="color:#3c2ea7c4;"/></b><br/>
+                                        Email:<b><span t-esc="doc.email" style="color:#3c2ea7c4;"/></b><br/>
+                                        City:<b><span t-esc="doc.city" style="color:#3c2ea7c4;"/></b><br/>
+                                        Specialist :<b><span t-esc="doc.docotor_speciality" style="color:#3c2ea7c4;"/></b><br/>
+                                        
+                                    </div>
+                                </t>
+                            </div>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    
+</odoo>
